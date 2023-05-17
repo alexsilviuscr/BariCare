@@ -1,0 +1,131 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background: var(--off-white);
+    z-index: 2;
+    padding: 1rem;
+  }
+.nav {
+    list-style-type: none;
+    position: absolute;
+    top: 100%;
+    background: var(--body-text-color);
+    left: 0;
+    display: none;
+    box-shadow: 0 0.1rem 0.5rem 0 rgb(0 0 0 / 0.2);
+}
+.nav ul {
+    list-style-type: none;
+    font: 1rem var(--font-body);
+    font-weight: 300;
+    padding: 0;
+}
+.nav a {
+    text-decoration: none;
+    border-block-end: 1px solid rgba(255, 255, 255, 0.025);
+    width: 100vw;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding-inline: 3.5rem;
+    color: var(--off-white);
+    transition: 0.3s ease;
+}
+.nav a:hover {
+    color: var(--body-text-color);
+    background-color: var(--off-white);
+}
+
+.logo-wrapper {
+    align-items: center;
+    gap: 1rem;
+    display: flex;
+    cursor: pointer;
+}
+.logo {
+    height: 3rem;
+}
+
+p.logo-p {
+    font: 2rem var(--font-logo);
+    letter-spacing: .05em;
+    color: var(--body-text-color);
+    font-weight: 600;
+}
+
+p.logo-p:before {
+    content: "Bari";
+    font: 1.5rem var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 200;
+}
+.mobile-menu-button {
+  display: block;
+}
+
+.showNav {
+  display: flex;
+}
+.logoutLinkLarge {
+  display: none;
+}
+.logoutLinkSmall {
+  display: block;
+}
+
+@media (min-width: 48rem) {
+    .header {
+      padding: 1rem 3rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .header {
+      padding: 1rem 5rem;
+    }
+    .nav {
+      position: unset;
+      display: block;
+      background: unset;
+      box-shadow: unset;
+    }
+    .nav ul {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    .nav a {
+      color: var(--body-text-color);
+      width: fit-content;
+      padding-inline: 0;
+      height: 3rem;
+      border-block-end: 1px solid rgba(255, 255, 255, 0);
+      transition: none;
+    }
+    .nav a:hover {
+      color: var(--body-text-color);
+      border-block: 1px solid var(--color-pop);
+      background: transparent;
+      box-shadow: none;
+      transition: none;
+    }
+    a.active {
+      border-block: 1px solid var(--color-pop);
+      height: 3rem;
+    }
+    .mobile-menu-button {
+      display: none;
+    }
+    .logoutLinkLarge {
+      display: block;
+    }
+    .logoutLinkSmall {
+      display: none;
+    }
+}
+

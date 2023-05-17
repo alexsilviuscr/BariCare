@@ -1,0 +1,52 @@
+$white: var(--off-white);
+// $gray: #888;
+$gray: #7D8082;
+$red: var(--color-red);
+
+
+.likeButton {
+  color: $white;
+  font: 1.1rem var(--font-body);
+  font-weight: 600;
+  background-color: $red;
+  border: 1px solid;
+  border-radius: 1em;
+  padding: 0.333em 1em 0.25em;
+  // line-height: 1.2em;
+  letter-spacing: 0.025em;
+  border-color: $red;
+  height: 2.5rem;
+  // box-shadow: 0 0.25em 1em -0.25em;
+  cursor: pointer;
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, transform 150ms ease-in-out, border-color 150ms ease-in-out;
+  outline: 0;
+  
+  &:hover {
+    color: $red;
+    background: $white;
+    border-color: $white;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  &:hover:not(:active) {
+    color: $red;
+    background: $white;
+    border-color: $white;
+  }
+  &.selected {
+    color: $gray;
+    background-color: transparent;
+    border-color: $gray;
+  }
+  
+  .heartIcon {
+    display: inline-block;
+    fill: currentColor;
+    width: 0.8em;
+    height: 0.8em;
+    margin-inline-end: 0.2em;
+    margin-block-end: 0.2em;
+  }
+}

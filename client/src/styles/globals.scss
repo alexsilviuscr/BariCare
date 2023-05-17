@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Biryani:wght@200;300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oooh+Baby&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --font-logo: "Oooh Baby", cursive;
+  --font-headers: "Cormorant Garamond", serif;
+  --font-body: "Biryani", sans-serif;
+  --body-text-color: #474747; /* Charcoal color for text/dark */
+  --main-color: #f5f3ed; /* Oyster color for backgrounds */
+  --color-pop: rgb(215, 181, 140); /* Honey color for contrast  */
+  --secondary-color: #e2d3c0; /* Toast color for dark accents */
+  --tertiary-color: #eae3d9; /* Nude color for mid accents */
+  --accent-color: rgba(43, 51, 73, 1); /*Dark blue for contrast accent */
+  --off-white: #f9f7f4; /* Ivory color for light accents */
+  --color-red: indianred; /* Cherry bomb for favorites */
+  --toastify-font-family: "Biryani", sans-serif !important;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--tertiary-color);
+}
+body::-webkit-scrollbar {
+  /* required - the "base" of the bar - mostly for setting width */
+  width: 0.85rem;
+}
+body::-webkit-scrollbar-track {
+  /* the "track" of the bar - great for customizing "background" colors */
+  border-radius: 0.5rem;
+  background: var(--main-color);
+}
+body::-webkit-scrollbar-thumb {
+  /* the actual draggable element, the star of the show! */
+  background: var(--color-pop);
+  border-radius: 0.5rem;
+}
+body::-moz-scrollbar {
+  width: 0.85rem;
+}
+body::-moz-scrollbar-thumb {
+  background: var(--color-pop);
+  border-radius: 0.5rem;
+}
+body::-moz-scrollbar-track {
+  border-radius: 0.5rem;
+  background: var(--main-color);
+}
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--tertiary-color);
+  font: var(--font-body);
+}
+h1 {
+  font: 2rem var(--font-headers);
+  color: var(--body-text-color);
+  font-weight: 600;
+}
+p {
+  font: 1rem var(--font-body);
+  color: var(--body-text-color);
+  font-weight: 300;
+}
+.auth-wrapper {
+  @apply rounded;
+  box-shadow: -1.5rem 1.5rem 0px var(--secondary-color);
+
+  @media (max-width: 32rem){
+    width: 85%;
+  }
+  @media (max-width: 94rem){
+    width: 85%;
+  }
+}
+.auth-page {
+  font: 1rem var(--font-body);
+}
+form {
+  font: 1rem var(--font-body);
+}
+.input-group {
+  @apply flex border rounded-none;
+}
+.icon {
+  position: absolute;
+  align-self: end;
+  margin-block-start: 0.85rem;
+  color: var(--accent-color);
+  opacity: 0.5;
+}
+.input-text {
+  @apply w-full py-2 px-4;
+
+  &:focus {
+    outline: 1px solid var(--color-pop);
+
+    ~ .icon {  /* Change property of sibling icon */
+      opacity: 1; 
+    }
+  }
+  &:not([type=email]) ~ span:hover * {
+    cursor: pointer;
+  }
+}
+.btn-login {
+  font: 1rem var(--font-body);
+  color: var(--off-white);
+  letter-spacing: .1em;
+  background-color: var(--accent-color);
+  text-transform: uppercase;
+  text-align: center;
+  padding: .5em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .3s;
+  
+  &:hover {
+    color: var(--off-white);
+    background: var(--body-text-color);
+  }
+}
+.auth-link {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+.main-wrap {
+  padding-block-start: 5rem;
+  background: var(--tertiary-color);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+.home-wrap {
+  @apply mx-auto max-w-screen-lg flex flex-col gap-10 py-16 px-8;
+
+}
+
+.home-intro {
+  @apply flex flex-col justify-center gap-4 pb-8;
+
+  @media (min-width: 64rem) {
+    justify-content: flex-start;
+  }
+}
+.create-recipe-wrap {
+  @apply mx-auto w-full lg:max-w-7xl flex flex-col gap-6;
+
+}
+.recipes-list {
+  @apply flex flex-wrap gap-16 sm:justify-center justify-between;
+
+}
+.image-link {
+  cursor: pointer;
+}
+.logo-scale {
+  scale: 1.5;
+  @media (max-width:32rem) {
+    scale: 1;
+  }
+}
+.username-home {
+  color: var(--font-body);
+  font: 2rem var(--font-logo);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding-inline: 0.1em;
+  word-wrap: break-word;
+}

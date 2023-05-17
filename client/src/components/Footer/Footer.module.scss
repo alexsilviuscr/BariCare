@@ -1,0 +1,18 @@
+$grey: #999999;
+
+.footer {
+    background: var(--main-color);
+    font: 1rem var(--font-body);
+    color: red;
+}
+.copyright {
+    color: $grey;
+    font: 1rem;
+}
+.nav {
+    color: $grey;
+}
+.border {
+    border-color: $grey;
+    opacity: 0.25;
+}

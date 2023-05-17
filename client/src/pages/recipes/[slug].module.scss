@@ -1,0 +1,89 @@
+$number-bg: var(--accent-color);
+$number-color: var(--off-white);
+
+$number-size: 35px;
+$number-bg-size: 1.25em;
+
+
+.title {
+    color: var(--accent-color);
+}
+.intro {
+    @apply rounded py-4 p-8 my-8 sm:items-center;
+
+    background: var(--accent-color);
+    color: var(--off-white);
+    font: 1rem var(--font-body);
+    font-weight: 200;
+}
+.spanInteract {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    word-wrap: break-word;
+}
+.recipeAuthor {
+    color: var(--color-pop);
+    font: 1.5rem var(--font-logo);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    padding-inline: 0.1em;
+}
+.Fa {
+    margin-block-end: 0.3em;
+}
+.img {
+    @apply block mx-auto rounded-md rounded-bl-none rounded-br-none;
+
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    background-image: url(https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1784&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: -1.25rem 1.25rem 0px var(--secondary-color);
+}
+.ol {
+    font: 1rem var(--font-body);
+    font-weight: 300;
+    list-style-type: none;
+    list-style-position: inside;
+
+    margin: 0;
+    padding: 0;
+     
+    counter-reset: li-counter;
+    
+    // li::marker {
+    //     font-weight: 600;
+    // }
+
+    li {
+        counter-increment: step-counter;
+        margin: $number-bg-size 0 1em;
+        padding-left: $number-size + 15px;
+        position: relative;
+        font: 1rem var(--font-body);
+        font-weight: 300;
+        line-height: 1.58;
+
+        &:before {
+            background-color: $number-bg;
+            border-radius: 50%;
+            color: $number-color;
+            content: counter(step-counter);
+            font-weight: 300;
+            text-align: center;
+            position: absolute;
+            width: $number-size;
+            height: $number-size;
+            line-height: $number-size;
+            left: 0;
+            top: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}

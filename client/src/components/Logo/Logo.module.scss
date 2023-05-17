@@ -1,0 +1,28 @@
+.logo-wrapper {
+    align-items: center;
+    gap: 1rem;
+    display: flex;
+}
+.logo {
+    height: 3rem;
+}
+
+p.logo-p {
+    font: 2rem var(--font-logo);
+    letter-spacing: .05em;
+    color: var(--body-text-color);
+    font-weight: 600;
+}
+
+p.logo-p:before {
+    content: "Bari";
+    font: 1.5rem var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 200;
+}
+
+.cursor-default {
+    cursor: default;
+}
+  
