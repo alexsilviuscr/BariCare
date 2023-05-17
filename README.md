@@ -2,7 +2,7 @@
 
 BariCare is a community-driven web application built using Next.js with React, a Node.js server, and MongoDB. It serves as a platform for sharing bariatric-friendly recipes. Users can register and log in to access a collection of recipes, create their own recipes, and save recipes from other users. The app features a warm and inviting design with earth tones to create a down-to-earth and relaxed atmosphere.
 
-Public link: https://baricare-app.netlify.app/
+Published link: https://baricare-app.netlify.app/
 
 ## Features
 
