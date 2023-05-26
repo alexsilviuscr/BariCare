@@ -14,7 +14,7 @@ export default function Layout( { children }) {
       }}
     >
         <div className={`flex h-screen ${styles['welcome-container']}`}>
-            <div className="m-auto bg-slate-50 w-3/5 h-3/4 grid lg:grid-cols-2 auth-wrapper">
+            <div className="m-auto bg-slate-50 w-3/5 min-h-3/4 sm:h-3/4 grid lg:grid-cols-2 auth-wrapper">
                 <div className={`${styles['img-style']} hidden sm:block`}>
                     <div className={styles['img-hero']}></div>
                 </div>

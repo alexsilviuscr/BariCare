@@ -20,6 +20,26 @@ export default function RecipeDetailPage() {
   const [isRecipeSaved, setIsRecipeSaved] = useState(false);
   const userID = useGetUserID();
   const [isLoading, setIsLoading] = useState(true);
+  const [nutritionalValues, setNutritionalValues] = useState(null);
+
+  const fetchNutritionalValues = async (ingredients) => {
+    try {
+      const ingrParam = encodeURIComponent(ingredients.join(','));
+      const url = `https://api.edamam.com/api/nutrition-data?app_id=906912a4&app_key=fed4aadf6db1e0c0d604ca51122f92ae&nutrition-type=cooking&ingr=${ingrParam}`;
+      console.log("URL:", url);
+      const response = await axios.get(url);
+      setNutritionalValues(response.data);
+      console.log("Nutritional Values:", response.data);
+    } catch (error) {
+      console.log("Could not get nutritional values.");
+    }
+  };
+
+  useEffect(() => {
+    if (recipe && recipe.ingredients) {
+      fetchNutritionalValues(recipe.ingredients);
+    }
+  }, [recipe?.ingredients]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -32,8 +52,10 @@ export default function RecipeDetailPage() {
           if (!userID) return;
           const promise = await axios.get(`https://baricare-app.herokuapp.com/auth/${userID}/username`);
           setRecipeAuthor(promise.data.username);
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
         }
-        setIsLoading(false);
       } catch(error) {
         console.log(error);
       }
@@ -53,6 +75,7 @@ export default function RecipeDetailPage() {
     if (slug) {
       fetchRecipe();
       fetchSavedRecipes();
+      // fetchNutritionalValues();
     }
   }, [slug]);
   
@@ -152,6 +175,15 @@ export default function RecipeDetailPage() {
                       <LikeButton isSaved={isRecipeSaved} handleClick={handleSaveClick} />
                     </div>
                     <p>{recipe.description}</p>
+
+                    {/* // Inside the return statement, after the recipe description */}
+                    <h1>Nutritional Values</h1>
+                    {nutritionalValues && (
+                      <div>
+                        <p>Calories: {nutritionalValues.calories}</p>
+                      </div>
+                    )}
+
                     <h1>Ingredients</h1>
                     <ol className={`list-decimal list-inside ${styles.ol}`}>
                       {recipe.ingredients.map((ingredient) => (
