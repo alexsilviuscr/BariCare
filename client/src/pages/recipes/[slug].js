@@ -44,13 +44,13 @@ export default function RecipeDetailPage() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const promise = await axios.get(`http://localhost:3001/recipes/`);
+        const promise = await axios.get(`https://baricare-app-server.up.railway.app/recipes/`);
         const matchingRecipe = promise.data.find((recipe) => recipe.slug === slug);
         setRecipe(matchingRecipe);
         if (matchingRecipe) {
           const userID = matchingRecipe.userOwner;
           if (!userID) return;
-          const promise = await axios.get(`http://localhost:3001/auth/${userID}/username`);
+          const promise = await axios.get(`https://baricare-app-server.up.railway.app/auth/${userID}/username`);
           setRecipeAuthor(promise.data.username);
           setIsLoading(false);
         } else {
@@ -64,7 +64,7 @@ export default function RecipeDetailPage() {
     const fetchSavedRecipes = async () => {
       try {
         const promise = await axios.get(
-          `http://localhost:3001/recipes/saved-recipes/ids/${userID}`
+          `https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userID}`
         );
         setSavedRecipes(promise.data.savedRecipes);
       } catch (error) {
@@ -87,7 +87,7 @@ export default function RecipeDetailPage() {
 
   const saveRecipe = async () => {
     try {
-      await axios.put(`http://localhost:3001/recipes/${recipe._id}`, {
+      await axios.put(`https://baricare-app-server.up.railway.app/recipes/${recipe._id}`, {
         userId: userID,
       });
       setIsRecipeSaved(true);
@@ -99,7 +99,7 @@ export default function RecipeDetailPage() {
 
   const deleteRecipe = async (recipeId, userId) => {
     try {
-      await axios.delete(`http://localhost:3001/recipes/saved-recipes/ids/${userId}`, {
+      await axios.delete(`https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userId}`, {
         data: { recipeId }
       });
       setIsRecipeSaved(false);

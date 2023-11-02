@@ -110,7 +110,7 @@ export default function createRecipe() {
         return;
       }
       try {
-        await axios.post("https://baricare-app.herokuapp.com/recipes", recipe);
+        await axios.post("hhttps://baricare-app-server.up.railway.app/recipes", recipe);
         notifySuccess();
         setTimeout(() => {
           router.push('/');

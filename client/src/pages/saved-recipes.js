@@ -18,7 +18,7 @@ export default function SavedRecipes() {
       try {
         const userID = localStorage.getItem("userID");
         const promise = await axios.get(
-          `http://localhost:3001/recipes/saved-recipes/ids/${userID}`
+          `https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userID}`
         );
         setSavedRecipes(promise.data.savedRecipes);
         setTimeout(() => setIsLoading(false), 850);
@@ -34,7 +34,7 @@ export default function SavedRecipes() {
     const fetchRecipeDetails = async () => {
       try {
         const promises = savedRecipes.map((recipe) =>
-          axios.get(`http://localhost:3001/recipes/${recipe}`)
+          axios.get(`https://baricare-app-server.up.railway.app/recipes/${recipe}`)
         );
         const responses = await Promise.all(promises);
         const recipeDetails = responses.map((response) => response.data);

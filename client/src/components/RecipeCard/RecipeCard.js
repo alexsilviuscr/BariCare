@@ -16,7 +16,7 @@ export default function RecipeCard({ recipe, savedRecipes, userID,  }) {
     const fetchRecipeAuthor = async () => {
       try {
         const userID = recipe.userOwner;
-        const promise = await axios.get(`http://localhost:3001/auth/${userID}/username`);
+        const promise = await axios.get(`https://baricare-app-server.up.railway.app/auth/${userID}/username`);
         setRecipeAuthor(promise.data.username);
       } catch(error) {
         console.log(error || "Couldn't find username");
@@ -28,7 +28,7 @@ export default function RecipeCard({ recipe, savedRecipes, userID,  }) {
 
   const saveRecipe = async () => {
     try {
-      await axios.put(`http://localhost:3001/recipes/${recipe._id}`, {
+      await axios.put(`https://baricare-app-server.up.railway.app/recipes/${recipe._id}`, {
         userId: userID,
       });
       setIsRecipeSaved(true);
@@ -40,7 +40,7 @@ export default function RecipeCard({ recipe, savedRecipes, userID,  }) {
 
   const deleteRecipe = async (recipeId, userId) => {
     try {
-      await axios.delete(`http://localhost:3001/recipes/saved-recipes/ids/${userId}`, {
+      await axios.delete(`https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userId}`, {
         data: { recipeId }
       });
       setIsRecipeSaved(false);
