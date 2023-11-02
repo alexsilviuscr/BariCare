@@ -16,8 +16,8 @@ Published link: https://baricare-app.netlify.app/
 
 - **Next.js**: Next.js is a React framework that provides server-side rendering, routing, and other useful features for building web applications.
 - **React**: React is a JavaScript library for building user interfaces, and it is the foundation of the frontend of the BariCare app.
-- **Node.js**: Node.js is a JavaScript runtime that allows running JavaScript code on the server-side, providing the backend for the BariCare app.
+- **Express.js**: Express.js is a minimalist web application framework for Node.js, used as the backend server for the BariCare app.
 - **MongoDB**: MongoDB is a NoSQL database used to store the recipe data and user information.
-- **Heroku**: Heroku is a cloud platform that allows deploying and hosting the BariCare app.
+- **Railway**: Railway is a cloud platform that allows deploying and hosting Node.js applications, replacing the previous deployment through Heroku.
 - **Tailwind CSS**: Tailwind CSS is a utility-first CSS framework used for styling the app, providing a responsive and customizable design.
 - **Framer Motion**: Framer Motion is a popular animation library for React, used to add smooth and engaging animations to the app.
