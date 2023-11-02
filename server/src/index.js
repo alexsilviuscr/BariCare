@@ -11,6 +11,7 @@ dotenv.config();
 const app = express();
 const mongoKey = process.env.MONGO_KEY;
 const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
 app.use(express.json());
 app.use(cors());
@@ -22,4 +23,7 @@ mongoose.connect(mongoKey, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-app.listen(port);
+
+app.listen(port, host, () => {
+  console.log(`Server started on http://${host}:${port}`);
+});
