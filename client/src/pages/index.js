@@ -21,7 +21,7 @@ export default function Home() {
     // get list of all recipes
     const fetchRecipes = async () => {
       try {
-        const promise = await axios.get("https://baricare-app.herokuapp.com/recipes");
+        const promise = await axios.get("http://localhost:3001/recipes");
         const sortedRecipes = promise.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setRecipes(sortedRecipes);
         setTimeout(() => setIsLoading(false), 850);
@@ -35,7 +35,7 @@ export default function Home() {
       try {
         const userID = localStorage.getItem("userID");
         const promise = await axios.get(
-          `https://baricare-app.herokuapp.com/recipes/saved-recipes/ids/${userID}`
+          `http://localhost:3001/recipes/saved-recipes/ids/${userID}`
         );
         setSavedRecipes(promise.data.savedRecipes);
       } catch (error) {
@@ -47,7 +47,7 @@ export default function Home() {
     const fetchUsername = async () => {
       try {
         const userID = localStorage.getItem("userID");
-        const promise = await axios.get(`https://baricare-app.herokuapp.com/auth/${userID}/username`);
+        const promise = await axios.get(`http://localhost:3001/auth/${userID}/username`);
         setUsername(promise.data.username);
       } catch(error) {
         console.log(error || "Couldn't find username");

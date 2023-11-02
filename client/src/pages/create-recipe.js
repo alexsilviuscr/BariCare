@@ -20,14 +20,14 @@ export default function createRecipe() {
     const imageFormats = ["jpg", "jpeg", "png", "gif", "webp"];
       
     const [recipe, setRecipe] = useState({
-    userOwner: "",
-    name: "",
-    description: "",
-    slug: "",
-    imageUrl: "",
-    ingredients: [],
-    cookingTime: 0,
-    instructions: [],
+      userOwner: "",
+      name: "",
+      description: "",
+      slug: "",
+      imageUrl: "",
+      ingredients: [],
+      cookingTime: 0,
+      instructions: [],
     });
     
     useEffect(() => {
