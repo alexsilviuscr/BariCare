@@ -152,7 +152,7 @@ export default function createRecipe() {
                           name="name"
                           required
                           onChange={handleChange}
-                          maxLength={80}
+                          maxLength={60}
                         />
                     </div>
                     <div className={styles["form-element"]}>
