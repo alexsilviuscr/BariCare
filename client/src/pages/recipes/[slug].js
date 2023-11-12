@@ -133,8 +133,7 @@ export default function RecipeDetailPage() {
     images: recipe.imageUrl,
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
-    ingredients: [recipe.ingredients],
-    instructions: [recipe.instruction],
+    ingredients: recipe.ingredients.map((ingredient) => ingredient),
   }
 
   return (
