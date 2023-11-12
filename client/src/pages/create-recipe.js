@@ -11,7 +11,6 @@ import slugify from "slugify";
 import randomstring from "randomstring";
 import { motion } from "framer-motion";
 import Button from "@/components/Button/Button";
-import AppLayout from "@/layouts/AppLayout";
 
 export default function createRecipe() {
   
