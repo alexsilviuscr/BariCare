@@ -1,4 +1,3 @@
-// import AppLayout from "@/layouts/AppLayout";
 import styles from "./[slug].module.scss";
 import Head from "next/head";
 import { useRouter } from 'next/router';
@@ -10,7 +9,6 @@ import Loader from "@/components/Loader/Loader";
 import { motion } from "framer-motion";
 import LikeButton from "@/components/Button/LikeButton";
 import Image from "next/image";
-import { NextSeo } from "next-seo";
 import { RecipeJsonLd } from "next-seo";
 
 export default function RecipeDetailPage() {
@@ -89,6 +87,10 @@ export default function RecipeDetailPage() {
 
   const saveRecipe = async () => {
     try {
+      if (!userID) {
+        router.push("/login");
+        return;
+      }
       await axios.put(`https://baricare-app-server.up.railway.app/recipes/${recipe._id}`, {
         userId: userID,
       });
