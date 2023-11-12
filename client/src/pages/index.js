@@ -1,4 +1,4 @@
-import AppLayout from "@/layouts/AppLayout";
+// import AppLayout from "@/layouts/AppLayout";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -60,7 +60,7 @@ export default function Home() {
 
   return (
     <>
-      <AppLayout>
+      {/* <AppLayout> */}
         <Head>
           <title>BariCare</title>
         </Head>
@@ -97,7 +97,7 @@ export default function Home() {
           </>
           )}
         </div>
-      </AppLayout>
+      {/* </AppLayout> */}
     </>
   )
 }
