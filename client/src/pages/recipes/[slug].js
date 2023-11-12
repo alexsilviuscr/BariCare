@@ -134,10 +134,7 @@ export default function RecipeDetailPage() {
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
     ingredients: recipe.ingredients,
-    instructions: recipe.instructions.map((instruction) => ({
-      "@type": "HowToStep",
-      text: instruction,
-    })),
+    instructions: recipe.instructions
   }
 
   return (
