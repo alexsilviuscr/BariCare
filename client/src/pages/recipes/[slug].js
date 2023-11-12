@@ -133,8 +133,8 @@ export default function RecipeDetailPage() {
     images: recipe.imageUrl,
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
-    ingredients: recipe.ingredients,
-    instructions: recipe.instructions,
+    ingredients: [recipe.ingredients],
+    instructions: [recipe.instruction],
   }
 
   return (
