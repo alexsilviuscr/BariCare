@@ -133,7 +133,11 @@ export default function RecipeDetailPage() {
     images: recipe.imageUrl,
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
-    ingredients: recipe.ingredients.map((ingredient) => ingredient),
+    ingredients: recipe.ingredients,
+    instructions: recipe.instructions.map((instruction) => ({
+      "@type": "HowToStep",
+      text: instruction,
+    })),
   }
 
   return (
