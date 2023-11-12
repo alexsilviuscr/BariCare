@@ -126,10 +126,13 @@ export default function RecipeDetailPage() {
     );
   }
 
-  const modifiedInstructions = recipe.instructions.map((instruction, index) => ({
-    name: `Step ${index + 1}`,
-    text: instruction,
-  }));
+  const modifiedInstructions = [];
+  recipe.instructions.forEach((instruction, index) => {
+    modifiedInstructions.push({
+      name: `Step ${index + 1}`,
+      text: instruction,
+    });
+  });
 
   const schema = {
     "@context": "https://schema.org",
