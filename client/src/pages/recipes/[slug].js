@@ -10,6 +10,7 @@ import Loader from "@/components/Loader/Loader";
 import { motion } from "framer-motion";
 import LikeButton from "@/components/Button/LikeButton";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 
 export default function RecipeDetailPage() {
   const router = useRouter();
@@ -124,8 +125,49 @@ export default function RecipeDetailPage() {
     );
   }
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name: recipe.name,
+    image: recipe.imageUrl,
+    author: {
+      "@type": "Person",
+      name: recipeAuthor,
+    },
+    description: recipe.description,
+    cookTime: `PT${recipe.cookingTime}M`,
+    recipeIngredient: recipe.ingredients.map((ingredient) => ingredient),
+    recipeInstructions: recipe.instructions.map((instruction, index) => ({
+      "@type": "HowToStep",
+      text: instruction,
+    })),
+  }
+
   return (
     <>
+      <NextSeo
+        title={recipe.name}
+        description={recipe.description}
+        canonical={`https://baricare.vercel.app/recipes/${slug}`}
+        openGraph={{
+          url: `https://baricare.vercel.app/recipes/${slug}`,
+          title: recipe.name,
+          description: recipe.description,
+          images: [
+            {
+              url: recipe.imageUrl,
+              alt: recipe.name,
+            },
+          ],
+          site_name: "BariCare",
+          type: "recipe",
+          locale: "en_US",
+          article: {
+            authors: [recipeAuthor],
+          },
+          ...schema,
+        }}
+      />
       <AppLayout>
         <Head>
           <title>{recipe.name}</title>
