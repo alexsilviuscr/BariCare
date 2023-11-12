@@ -126,7 +126,7 @@ export default function RecipeDetailPage() {
     );
   }
 
-  const modifiedInstructions = recipe.instructions.map((instruction, index) => ({
+  const modifiedInstructions = recipe.instructions((instruction, index) => ({
     name: `Step ${index + 1}`,
     text: instruction,
   }));
