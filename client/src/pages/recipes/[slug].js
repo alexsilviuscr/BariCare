@@ -1,4 +1,4 @@
-import AppLayout from "@/layouts/AppLayout";
+// import AppLayout from "@/layouts/AppLayout";
 import styles from "./[slug].module.scss";
 import Head from "next/head";
 import { useRouter } from 'next/router';
@@ -168,7 +168,7 @@ export default function RecipeDetailPage() {
           ...schema,
         }}
       />
-      <AppLayout>
+      {/* <AppLayout> */}
         <Head>
           <title>{recipe.name}</title>
         </Head>
@@ -249,7 +249,7 @@ export default function RecipeDetailPage() {
           </>
         )}
         </div>
-      </AppLayout>
+      {/* </AppLayout> */}
     </>
   );
 }

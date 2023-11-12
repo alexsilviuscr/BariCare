@@ -16,17 +16,17 @@ const pages = [
 export default function Navbar() {
   const router = useRouter();
   const [showNav, setShowNav] = useState(false);
+  const [cookies, setCookies] = useCookies(["access_token"]);
+  const isLoggedIn = !!cookies?.access_token;
 
   const handleMenuClick = () => {
     setShowNav(!showNav);
   };
 
-  const [_, setCookies] = useCookies(["access_token"]);
-
   const Logout = () => {
     setCookies("access_token", "")
     window.localStorage.removeItem("userID");
-    router.push("/login");
+    window.location.reload();
   };
 
   return (
@@ -61,14 +61,31 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-            <li className={styles.logoutLinkSmall}>
-              <Link href="/" legacyBehavior>
-                <a onClick={Logout} className={styles.link}>Logout</a>
-              </Link>
-            </li>
-            <li className={styles.logoutLinkLarge}>
-                <Button onClick={Logout} buttonType="tertiary">Logout</Button>
-            </li>
+            {isLoggedIn ? (
+              <>
+                <li className={styles.logoutLinkSmall}>
+                  <Link href="/" legacyBehavior>
+                    <a onClick={Logout} className={styles.link}>Logout</a>
+                  </Link>
+                </li>
+                <li className={styles.logoutLinkLarge}>
+                  <Button onClick={Logout} buttonType="tertiary">Logout</Button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className={styles.logoutLinkSmall}>
+                  <Link href="/login" legacyBehavior>
+                    <a className={styles.link}>Login</a>
+                  </Link>
+                </li>
+                <li className={styles.logoutLinkLarge}>
+                  <Link href="/login" legacyBehavior>
+                    <Button buttonType="tertiary">Login</Button>
+                  </Link>
+                </li>
+              </>
+            )}
         </ul>
       </nav>
     </header>

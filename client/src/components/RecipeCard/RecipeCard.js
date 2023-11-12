@@ -6,11 +6,13 @@ import styles from "./RecipeCard.module.scss";
 import LikeButton from "../Button/LikeButton";
 import Button from "../Button/Button";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 export default function RecipeCard({ recipe, savedRecipes, userID,  }) {
   const [isRecipeSaved, setIsRecipeSaved] = useState(savedRecipes.includes(recipe._id));
   const [recipeAuthor, setRecipeAuthor] = useState("");
   const [isSaved, setIsSaved] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchRecipeAuthor = async () => {
@@ -28,6 +30,10 @@ export default function RecipeCard({ recipe, savedRecipes, userID,  }) {
 
   const saveRecipe = async () => {
     try {
+      if (!userID) {
+        router.push("/login");
+        return;
+      }
       await axios.put(`https://baricare-app-server.up.railway.app/recipes/${recipe._id}`, {
         userId: userID,
       });
