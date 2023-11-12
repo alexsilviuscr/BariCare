@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import LikeButton from "@/components/Button/LikeButton";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
+import { RecipeJsonLd } from "next-seo";
 
 export default function RecipeDetailPage() {
   const router = useRouter();
@@ -145,13 +146,13 @@ export default function RecipeDetailPage() {
 
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title={recipe.name}
         description={recipe.description}
         canonical={`https://baricare.vercel.app/recipes/${slug}`}
         openGraph={{
           url: `https://baricare.vercel.app/recipes/${slug}`,
-          title: recipe.name,
+          title: `BariCare - ${recipe.name}`,
           description: recipe.description,
           images: [
             {
@@ -167,7 +168,8 @@ export default function RecipeDetailPage() {
           },
           ...schema,
         }}
-      />
+      /> */}
+      <RecipeJsonLd {...schema} />
       {/* <AppLayout> */}
         <Head>
           <title>{recipe.name}</title>
