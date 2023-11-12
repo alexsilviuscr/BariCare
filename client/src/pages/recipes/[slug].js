@@ -126,13 +126,10 @@ export default function RecipeDetailPage() {
     );
   }
 
-  const modifiedInstructions = [];
-  recipe.instructions.forEach((instruction, index) => {
-    modifiedInstructions.push({
-      name: `Step ${index + 1}`,
-      text: instruction,
-    });
-  });
+  const modifiedInstructions = recipe.instructions.map((instruction, index) => ({
+    name: `Step ${index + 1}`,
+    text: instruction,
+  }));
 
   const schema = {
     "@context": "https://schema.org",
@@ -142,7 +139,7 @@ export default function RecipeDetailPage() {
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
     ingredients: recipe.ingredients,
-    instructions: modifiedInstructions,
+    instructions: modifiedInstructions
   }
 
   return (
