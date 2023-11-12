@@ -80,7 +80,7 @@ export default function Home() {
             >
               <main className="home-wrap">
                 <div className="home-intro">
-                  <h1><span className="username-home">Welcome {username},</span></h1>
+                  <h1><span className="username-home">Welcome {username}</span></h1>
                 </div>
                 <ul className="recipes-list">
                   {recipes.map((recipe) => (
