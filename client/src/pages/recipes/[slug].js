@@ -130,45 +130,15 @@ export default function RecipeDetailPage() {
     "@context": "https://schema.org",
     "@type": "Recipe",
     name: recipe.name,
-    image: recipe.imageUrl,
-    author: {
-      "@type": "Person",
-      name: recipeAuthor,
-    },
+    images: recipe.imageUrl,
     description: recipe.description,
     cookTime: `PT${recipe.cookingTime}M`,
-    recipeIngredient: recipe.ingredients.map((ingredient) => ingredient),
-    recipeInstructions: recipe.instructions.map((instruction, index) => ({
-      "@type": "HowToStep",
-      text: instruction,
-    })),
+    ingredients: recipe.ingredients,
+    instructions: recipe.instructions,
   }
 
   return (
     <>
-      {/* <NextSeo
-        title={recipe.name}
-        description={recipe.description}
-        canonical={`https://baricare.vercel.app/recipes/${slug}`}
-        openGraph={{
-          url: `https://baricare.vercel.app/recipes/${slug}`,
-          title: `BariCare - ${recipe.name}`,
-          description: recipe.description,
-          images: [
-            {
-              url: recipe.imageUrl,
-              alt: recipe.name,
-            },
-          ],
-          site_name: "BariCare",
-          type: "recipe",
-          locale: "en_US",
-          article: {
-            authors: [recipeAuthor],
-          },
-          ...schema,
-        }}
-      /> */}
       <RecipeJsonLd {...schema} />
       {/* <AppLayout> */}
         <Head>
