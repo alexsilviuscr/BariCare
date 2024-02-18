@@ -1,3 +1,4 @@
+'use client'
 import SignUp from "@/components/Auth/SignUp";
 import Head from "next/head";
 

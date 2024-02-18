@@ -15,13 +15,14 @@ export default function Home() {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const apiUrl = process.env.NEXT_PUBLIC_RAILWAY_KEY;
 
   useEffect(() => {
 
     // get list of all recipes
     const fetchRecipes = async () => {
       try {
-        const promise = await axios.get("https://baricare-app-server.up.railway.app/recipes");
+        const promise = await axios.get(`${apiUrl}/recipes`);
         const sortedRecipes = promise.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setRecipes(sortedRecipes);
         setTimeout(() => setIsLoading(false), 850);
@@ -35,7 +36,7 @@ export default function Home() {
       try {
         const userID = localStorage.getItem("userID");
         const promise = await axios.get(
-          `https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userID}`
+          `${apiUrl}/recipes/saved-recipes/ids/${userID}`
         );
         setSavedRecipes(promise.data.savedRecipes);
       } catch (error) {
@@ -47,7 +48,7 @@ export default function Home() {
     const fetchUsername = async () => {
       try {
         const userID = localStorage.getItem("userID");
-        const promise = await axios.get(`https://baricare-app-server.up.railway.app/auth/${userID}/username`);
+        const promise = await axios.get(`${apiUrl}/auth/${userID}/username`);
         setUsername(promise.data.username);
       } catch(error) {
         console.log(error || "Couldn't find username");

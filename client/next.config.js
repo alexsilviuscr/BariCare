@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['*'],
   },
+  env: {
+    NEXT_PUBLIC_RAILWAY_KEY: process.env.NEXT_PUBLIC_RAILWAY_KEY,
+  },
 };
 
 module.exports = nextConfig

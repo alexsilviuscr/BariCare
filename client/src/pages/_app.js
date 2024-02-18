@@ -28,6 +28,7 @@ export default function App({ Component, pageProps, router }) {
   const isLoginPage = router.pathname === "/login";
   const isRegisterPage = router.pathname === "/register";
   const shouldRenderNavbar = !isLoginPage && !isRegisterPage;
+  const apiUrl = process.env.NEXT_PUBLIC_RAILWAY_KEY;
 
   return (
     <>

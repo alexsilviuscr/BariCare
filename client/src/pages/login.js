@@ -1,3 +1,4 @@
+'use client'
 import Login from "@/components/Auth/Login";
 import Head from "next/head";
 import { useRouter } from "next/router";

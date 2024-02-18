@@ -12,13 +12,14 @@ export default function SavedRecipes() {
   const [recipeDetails, setRecipeDetails] = useState([]);
   const userID = useGetUserID();
   const [isLoading, setIsLoading] = useState(true);
+  const apiUrl = process.env.NEXT_PUBLIC_RAILWAY_KEY;
 
   useEffect(() => {
     const fetchSavedRecipes = async () => {
       try {
         const userID = localStorage.getItem("userID");
         const promise = await axios.get(
-          `https://baricare-app-server.up.railway.app/recipes/saved-recipes/ids/${userID}`
+          `${apiUrl}/recipes/saved-recipes/ids/${userID}`
         );
         setSavedRecipes(promise.data.savedRecipes);
         setTimeout(() => setIsLoading(false), 850);
@@ -34,7 +35,7 @@ export default function SavedRecipes() {
     const fetchRecipeDetails = async () => {
       try {
         const promises = savedRecipes.map((recipe) =>
-          axios.get(`https://baricare-app-server.up.railway.app/recipes/${recipe}`)
+          axios.get(`${apiUrl}/recipes/${recipe}`)
         );
         const responses = await Promise.all(promises);
         const recipeDetails = responses.map((response) => response.data);
